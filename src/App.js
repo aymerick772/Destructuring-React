@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Result from './components/Game';
+import Form from "./components/Form"
 
 function App() {
   return (
     <div className="App">
-      <Result ></Result>
+      <Form></Form>
     </div>
   );
 }
