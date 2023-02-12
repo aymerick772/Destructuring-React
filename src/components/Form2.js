@@ -1,6 +1,17 @@
 import React, {Component} from "react";
+import styled from "styled-components";
 
-
+const Title  = styled.h1`
+color: red;
+font-size: 80px;
+`
+const Button = styled.button`
+    background : black;
+    color : #ffffff;
+    padding: 12px 13px;
+    margin: 8px;
+    font-size: 15px;
+`
 class  Form2 extends Component {
 
     //a faire que si les valeur du tableau ne sont pas dynamique
@@ -8,8 +19,9 @@ class  Form2 extends Component {
     render(){
         return (
            <div className="">
-                <h1 className="">Commentaire</h1>
-                <button className="btn btn-danger">Valider</button>
+                <Title className="">Commentaire</Title>
+                <button>Valider</button>
+                <Button>Valider</Button>
            </div>
         )
     }
