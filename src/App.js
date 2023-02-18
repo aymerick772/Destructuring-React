@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import Form from "./components/Form"
-import Form2 from "./components/Form2"
+import MyRef from './components/MyRef'
 
-function App() {
-  return (
-    <div className="App">
-      {/* <Form head={true}></Form> */}
-      <Form2 head={true}></Form2>
+class App extends Component {
+  constructor(props){
+    super(props);
 
-    </div>
-  );
+    this.refComponent = React.createRef();
+  }
+
+  handleClick = () => {
+    console.log(this.refComponent.current);
+    this.refComponent.current.addFocus()
+  }
+  render(){
+    return (
+      <div className="App">
+        <MyRef ref={this.refComponent}/>
+        
+        <button onClick={this.handleClick}>Valider</button>
+      </div>
+    );
+  }
 }
 
 export default App;

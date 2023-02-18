@@ -12,6 +12,8 @@ code {
     monospace;
 }
 
-.carBorder{
-  border: 1px solid red;
+
+input:focus{
+  background-color: yellow;
 }
+
