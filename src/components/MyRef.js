@@ -42,11 +42,5 @@ class MyRef extends Component{
         )
     }
 }
-<<<<<<< HEAD
-//test 2
-=======
 
-//test
-
->>>>>>> 490654bd965f75db331217adb649a746573af026
 export default MyRef;
