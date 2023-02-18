@@ -1,16 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import Form from "./components/Form"
-import Form2 from "./components/Form2"
+// import MyComponent from './components/MyComponent';
+import Modal from './components/Modal';
 
-function App() {
-  return (
-    <div className="App">
-      {/* <Form head={true}></Form> */}
-      <Form2 head={true}></Form2>
 
-    </div>
-  );
+
+
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      showModal:  false,
+    }
+  }
+  
+  handleShow = () =>{
+    this.setState({
+      showModal: true,
+      }
+    )
+  }
+
+  handleHight = () =>{
+    this.setState({
+      showModal: false,
+    })
+  }
+
+  render(){
+    // const modal = this.state.showModal ? ( <Modal/>) : null;
+    //autre méthode
+    const modal = this.state.showModal && ( <Modal closeModal={this.handleHight}/>);
+    return (
+      <div className="App">
+        {/* <MyComponent/> */}
+        <button onClick={this.handleShow} > afficher modal</button>
+       {modal}
+      </div>
+    );
+  }
 }
 
 export default App;
