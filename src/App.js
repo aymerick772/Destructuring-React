@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
+// import MyComponent from './components/MyComponent';
+import Modal from './components/Modal';
 
-// import MyRef from './components/MyRef'
-import MyRefFunc from './components/MyRefFunc'
+
 
 
 class App extends Component {
@@ -20,12 +21,10 @@ class App extends Component {
     )
   }
 
-  handleClick = () => {
-    console.log(this.refComponent.current);
-    // this.refComponent.current.addFocus();
-    this.refComponent.current.focus();
-    // console.log('okoke')
-
+  handleHight = () =>{
+    this.setState({
+      showModal: false,
+    })
   }
 
   render(){
@@ -34,10 +33,9 @@ class App extends Component {
     const modal = this.state.showModal && ( <Modal closeModal={this.handleHight}/>);
     return (
       <div className="App">
-
-        {/* <MyRef ref={this.refComponent}/> */}
-        <MyRefFunc name="okok" ref={this.refComponent}/>
-        <button onClick={this.handleClick}>Valider</button>
+        {/* <MyComponent/> */}
+        <button onClick={this.handleShow} > afficher modal</button>
+       {modal}
       </div>
     );
   }
