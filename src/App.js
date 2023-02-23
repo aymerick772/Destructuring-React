@@ -7,6 +7,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      vegeta: 100, // Point de vie
+      goku: 100
     }
   }
   render(){
@@ -17,8 +19,8 @@ class App extends Component {
         <hr />
 
         <div className="row">
-            <Vegeta />
-            <Goku />
+            <Vegeta name="Vegeta" vie={this.state.vegeta}/>
+            <Goku name="Goku" vie={this.state.goku}/>
         </div>
       </div>
     );
