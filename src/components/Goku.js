@@ -20,11 +20,17 @@ class Goku extends Component{
         const {addHits} = this.props;
         const {hocState} = this.props;
         const {vie} = this.props;
+        
+        const lifeValue = vie > 0 ? (<td>{vie} %</td>) : (<td>Il est mort</td>);
+        const buttonAble = vie > 0 ? (
+            <button className="btn btn-success" onClick={addHits}>{name} Frappe</button>) : (
+                <button className="btn btn-danger" disabled>{name} Mort</button>
+            ); 
         return (
             <div className="col">
             <img src={goku} width="477px" alt="Goku" /> 
             <br />
-            <button className="btn btn-success" onClick={addHits}>{name} Frappe</button>
+            {buttonAble}
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -35,8 +41,7 @@ class Goku extends Component{
                 <tbody>
                     <tr>
                         <td>{hocState.hits}</td>
-                        
-                        <td>{vie}</td>
+                        {lifeValue}
                     </tr>
                 </tbody>
             </table>
@@ -45,4 +50,4 @@ class Goku extends Component{
     }
 }
 
-export default countHits(Goku);
+export default countHits(Goku, 20);

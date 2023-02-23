@@ -16,12 +16,16 @@ class Vegeta extends Component {
     // }
     render() {
         const {name,addHits, hocState, vie } = this.props;
- 
+        const lifeValue = vie > 0 ? (<td>{vie} %</td>) : (<td>Il est mort</td>);
+        const buttonAble = vie > 0 ? (
+        <button className="btn btn-success" onClick={addHits}>{name} Frappe</button>) : (
+            <button className="btn btn-danger" disabled>{name} Mort</button>
+        ); 
         return (
             <div className="col">
                 <img src={vegeta} alt="" /> 
                 <br />
-                <button className="btn btn-success" onClick={addHits}>{name} Frappe</button>
+                {buttonAble}
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -32,7 +36,7 @@ class Vegeta extends Component {
                     <tbody>
                         <tr>
                             <td>{hocState.hits}</td>
-                            <td>{vie}</td>
+                            {lifeValue}
                             
                         </tr>
                     </tbody>
@@ -42,4 +46,4 @@ class Vegeta extends Component {
     }
 }
 
-export default countHits(Vegeta);
+export default countHits(Vegeta, 10);
