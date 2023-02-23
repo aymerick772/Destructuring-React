@@ -7,6 +7,20 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      vegeta: 100, // Point de vie
+      goku: 100
+    }
+  }
+
+  reduceLife = (param, param2) =>{
+    if(param == 'Goku'){
+      this.setState({
+        vegeta: this.state.vegeta - param2
+      })
+    }else{
+      this.setState({
+        goku : this.state.goku - param2
+      })
     }
   }
   render(){
@@ -17,8 +31,8 @@ class App extends Component {
         <hr />
 
         <div className="row">
-            <Vegeta />
-            <Goku />
+            <Vegeta name="Vegeta" vie={this.state.vegeta} reduceHandler={this.reduceLife}/>
+            <Goku name="Goku" vie={this.state.goku} reduceHandler={this.reduceLife}/>
         </div>
       </div>
     );
