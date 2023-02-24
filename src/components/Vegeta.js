@@ -1,21 +1,14 @@
 import React, { Component} from "react";
-import countHits from "./CountHits";
+import handleClick from "./handleClicks";
 import vegeta from "../Vegeta.png";
 
 class Vegeta extends Component {
-    state  = {
-        bg: ''
-    }
-    handleCLick = () =>{
-        this.setState({
-            bg: 'bg-success'
-        })
-    }
     render() {
+        const {backGround, clickHandler } = this.props;
 
         return (
-            <div className={`col ${this.state.bg}`}>
-                <img src={vegeta} onClick={this.handleCLick} width="268px" alt="" /> 
+            <div className={`col ${backGround}`}>
+                <img src={vegeta} onClick={clickHandler} width="268px" alt="" /> 
        
                
             </div>
@@ -23,4 +16,4 @@ class Vegeta extends Component {
     }
 }
 
-export default Vegeta;
+export default  handleClick(Vegeta);

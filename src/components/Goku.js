@@ -3,20 +3,15 @@ import React, {Component} from "react";
 import countHits from "./CountHits";
 import goku from '../Goku.png'
 
-class Goku extends Component{
-    state  = {
-        bg: ''
-    }
-    handleCLick = () =>{
-        this.setState({
-            bg: 'bg-success'
-        })
-    }
-    render(){
+import handleClick from "./handleClicks";
 
+class Goku extends Component{
+
+    render(){
+        const {backGround, clickHandler } = this.props;
         return (
-            <div className={`col ${this.state.bg}`}>
-            <img src={goku} onClick={this.handleCLick} width="275px" alt="Goku" /> 
+            <div className={`col ${backGround}`}>
+            <img src={goku} onClick={clickHandler} width="275px" alt="Goku" /> 
             <br />
 
 
@@ -25,4 +20,4 @@ class Goku extends Component{
     }
 }
 
-export default Goku;
+export default  handleClick(Goku);
