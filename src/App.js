@@ -2,37 +2,33 @@ import React, { Component } from 'react';
 import './App.css';
 import Vegeta from './components/Vegeta';
 import Goku from './components/Goku';
+import Frieza from './components/Frieza';
+import ErrorBoundary from './components/ErrorBoundary';
 
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      vegeta: 100, // Point de vie
-      goku: 100
-    }
+
   }
 
-  reduceLife = (param, param2) =>{
-    if(param == 'Goku'){
-      this.setState({
-        vegeta: this.state.vegeta - param2
-      })
-    }else{
-      this.setState({
-        goku : this.state.goku - param2
-      })
-    }
-  }
+
   render(){
     
     return (
       <div className="container text-center">
-        <h1>Goku Vs Vegeta</h1>
+        <h1>Cliquer sur les gentils</h1>
         <hr />
 
         <div className="row">
-            <Vegeta name="Vegeta" vie={this.state.vegeta} reduceHandler={this.reduceLife}/>
-            <Goku name="Goku" vie={this.state.goku} reduceHandler={this.reduceLife}/>
+          <ErrorBoundary>
+          </ErrorBoundary>
+            <Vegeta />
+          <ErrorBoundary>
+            <Frieza />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <Goku />
+          </ErrorBoundary>
         </div>
       </div>
     );
