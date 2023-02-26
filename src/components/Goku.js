@@ -1,6 +1,4 @@
 import React, {Component} from "react";
-
-import countHits from "./CountHits";
 import goku from '../Goku.png'
 
 import handleClick from "./handleClicks";
@@ -8,16 +6,30 @@ import handleClick from "./handleClicks";
 class Goku extends Component{
 
     render(){
-        const {backGround, clickHandler } = this.props;
+        const {hits, addOne, name} = this.props;
+    
         return (
-            <div className={`col ${backGround}`}>
-            <img src={goku} onClick={clickHandler} width="275px" alt="Goku" /> 
-            <br />
-
-
+            <div className="col">
+                <img src={goku} alt="" /> 
+                <br />
+                <button className="btn btn-success m-3" onClick={addOne}>Coups de {name}:</button>
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Coups</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                           
+                            <td>{hits}</td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
         </div>
         )
     }
 }
 
-export default  handleClick(Goku);
+export default  Goku;
