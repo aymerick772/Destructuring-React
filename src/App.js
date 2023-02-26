@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Vegeta from './components/Vegeta';
 import Goku from './components/Goku';
-import Frieza from './components/Frieza';
 import ErrorBoundary from './components/ErrorBoundary';
-
+import AddHits from './components/AddHits';
 class App extends Component {
   constructor(props){
     super(props);
@@ -16,19 +15,26 @@ class App extends Component {
     
     return (
       <div className="container text-center">
-        <h1>Cliquer sur les gentils</h1>
-        <hr />
-
+        <h1>Vegeta VS Goku</h1>
         <div className="row">
-          <ErrorBoundary>
+       <ErrorBoundary>
+        
+          <AddHits render={(hits, addOne, saiyan) =>
+          // si saiyan.goku
+            saiyan.vegeta && <Vegeta hits={hits} addOne={addOne} name="Vegeta"/>
+          } />
+        </ErrorBoundary>
+       <ErrorBoundary>
+          <AddHits render={(hits, addOne, saiyan) =>
+           saiyan.goku && <Goku hits={hits} addOne={addOne} name="Goku"/>
+          } />
+        </ErrorBoundary>
+       {/* <ErrorBoundary>
+            <Vegeta render={(saiyan)=> saiyan && "vegeta"} />
           </ErrorBoundary>
-            <Vegeta />
           <ErrorBoundary>
-            <Frieza />
-          </ErrorBoundary>
-          <ErrorBoundary>
-            <Goku />
-          </ErrorBoundary>
+            <Goku name="Goku" />
+          </ErrorBoundary> */}
         </div>
       </div>
     );
@@ -36,3 +42,5 @@ class App extends Component {
 }
 //
 export default App;
+     
+         

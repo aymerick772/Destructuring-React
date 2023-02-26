@@ -1,19 +1,32 @@
 import React, { Component} from "react";
-import handleClick from "./handleClicks";
 import vegeta from "../Vegeta.png";
 
 class Vegeta extends Component {
-    render() {
-        const {backGround, clickHandler } = this.props;
 
+    render() {
+        const {hits, addOne, name} = this.props;
         return (
-            <div className={`col ${backGround}`}>
-                <img src={vegeta} onClick={clickHandler} width="268px" alt="" /> 
-       
-               
-            </div>
+            <div className="col">
+            <img src={vegeta} alt="" /> 
+            <br />
+            <button className="btn btn-success m-3" onClick={addOne}>Coups de {name}:</button>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Coups</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>{hits}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+    </div>
         )
     }
 }
 
-export default  handleClick(Vegeta);
+export default  Vegeta;
