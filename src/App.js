@@ -1,42 +1,54 @@
 import React, { Component } from 'react';
 import './App.css';
-import Vegeta from './components/Vegeta';
-import Goku from './components/Goku';
 import ErrorBoundary from './components/ErrorBoundary';
-import AddHits from './components/AddHits';
+import Docs from './components/Docs';
+import Community from './components/Community';
+import Tutorials from './components/Tutorials';
+import Menu from './components/Menu';
+import ErrorPage from './components/ErrorPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 class App extends Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      underConst: {
+        Docs: false,
+        Tutorials : false,
+        Community: false,
+      }
+    }
 
   }
 
 
   render(){
-    
     return (
-      <div className="container text-center">
-        <h1>Vegeta VS Goku</h1>
-        <div className="row">
-       <ErrorBoundary>
-        
-          <AddHits render={(hits, addOne, saiyan) =>
-          // si saiyan.goku
-            saiyan.vegeta && <Vegeta hits={hits} addOne={addOne} name="Vegeta"/>
-          } />
-        </ErrorBoundary>
-       <ErrorBoundary>
-          <AddHits render={(hits, addOne, saiyan) =>
-           saiyan.goku && <Goku hits={hits} addOne={addOne} name="Goku"/>
-          } />
-        </ErrorBoundary>
-       {/* <ErrorBoundary>
-            <Vegeta render={(saiyan)=> saiyan && "vegeta"} />
-          </ErrorBoundary>
-          <ErrorBoundary>
-            <Goku name="Goku" />
-          </ErrorBoundary> */}
-        </div>
-      </div>
+      <Router>       
+          <Menu/>
+          <Routes>
+            {/* Exact ou Strict */}
+            <Route strict path="/" element={<Docs/>}/>
+            <Route exact path="/tutorial" element={<Tutorials/>} />
+
+
+            {/* Rectification pour version 6, ne fonctionne pas non plus car : useNavigate ne peux pas être appeler dans une class */}
+            {/* <Route exact path="/tutorial" render={() =>{
+              this.state.underConst.Tutorials ? (navigate("/community")
+                ) : (<Tutorials/>)
+            }}/> */}
+
+            {/* Navigate ne fonctionne pas dans ce cas, voir les hooks */}
+            {/* <Route exact path="/tutorial" render={() =>{
+              this.state.underConst.Tutorials ? (<Navigate to="/community" replace={true}/>
+                ) : (<Tutorials/>)
+            }}/> */}
+          
+            <Route exact path="/community" element={<Community/>} />
+            
+            <Route path="*" element={<ErrorPage />}/>
+          </Routes>
+      </Router>
     );
   }
 }
