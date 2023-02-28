@@ -4,6 +4,7 @@ import ErrorBoundary from './components/ErrorBoundary';
 import Docs from './components/Docs';
 import Community from './components/Community';
 import Tutorials from './components/Tutorials';
+import Profile from './components/Profile';
 import Menu from './components/Menu';
 import ErrorPage from './components/ErrorPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -24,12 +25,14 @@ class App extends Component {
 
   render(){
     return (
+      
       <Router>       
           <Menu/>
           <Routes>
             {/* Exact ou Strict */}
             <Route strict path="/" element={<Docs/>}/>
             <Route exact path="/tutorial" element={<Tutorials/>} />
+            <Route  path="/user/:profileId" element={<Profile/>} />
 
 
             {/* Rectification pour version 6, ne fonctionne pas non plus car : useNavigate ne peux pas être appeler dans une class */}
