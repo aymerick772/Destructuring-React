@@ -6,6 +6,7 @@ import Community from './components/Community';
 import Tutorials from './components/Tutorials';
 import Profile from './components/Profile';
 import Menu from './components/Menu';
+import {MyContext} from './components/Mycontext';
 import ErrorPage from './components/ErrorPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
         Docs: false,
         Tutorials : false,
         Community: false,
+        chaise : "Chaise hostile"
       }
     }
 
@@ -24,9 +26,10 @@ class App extends Component {
 
 
   render(){
+
     return (
-      
       <Router>       
+        <MyContext.Provider value={this.state.underConst}>
           <Menu/>
           <Routes>
             {/* Exact ou Strict */}
@@ -51,6 +54,7 @@ class App extends Component {
             
             <Route path="*" element={<ErrorPage />}/>
           </Routes>
+        </MyContext.Provider>
       </Router>
     );
   }

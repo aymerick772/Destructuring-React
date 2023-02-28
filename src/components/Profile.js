@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import goku from "../Goku.png"
 
+import ComposantEnfant from "./ComposantEnfant";
+
 class Profile extends Component {
 
     constructor(props){
@@ -28,18 +30,18 @@ class Profile extends Component {
                     _repeat: 10
                 }
             }
-            axios({
-                method : "GET",
-                url : "https://dummyjson.com/users",
-                data : payload
-            }).then(resp => {
-                //je fais en dure car ça marche pas
-                console.log(resp.data.users[data])
+            // axios({
+            //     method : "GET",
+            //     url : "https://dummyjson.com/users",
+            //     data : payload
+            // }).then(resp => {
+            //     //je fais en dure car ça marche pas
+            //     console.log(resp.data.users[data])
                 
-                this.setState({
-                    data: resp.data.users[data]
-                })  
-            })
+            //     this.setState({
+            //         data: resp.data.users[data]
+            //     })  
+            // })
 
         }
     }
@@ -58,6 +60,7 @@ class Profile extends Component {
                     <li className="list-group-item">Adress email: {email} </li>
                     <li className="list-group-item">phone:  {phone} </li>
                 </ul>
+                <ComposantEnfant/>
             </div>
         )
     }
